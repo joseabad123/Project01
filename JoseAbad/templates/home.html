@@ -1,0 +1,36 @@
+<html>
+  <body>
+    <h1>Persona </h1>
+    <form method="POST" action="/">
+      <input type="text" name="nombre"> 
+      <input type="text" name="apellido">
+      <input type="submit" value="Agregar">
+    </form>
+    <h1>Personas</h1>
+
+    <table>
+      {% for persona in personas %}
+      <tr>
+        <td>
+          <p>{{persona.nombre,persona.apellido}}</p> <!---->
+        </td>
+        <td>
+          <form method="POST" action="./update">
+            <input type="hidden" value="{{persona.id}}" name="idpersona">
+            <input type="text" value="{{persona.nombre}}" name="newname">
+            <input type="text" value="{{persona.apellido}}" name="new_ape">
+            <input type="submit" value="Update">
+          </form>
+        </td>
+        <td>
+            <form method="POST" action="./delete" style="display: inline">
+              <input type="hidden" value="{{persona.id}}" name="idpersona">
+              <input type="submit" value="Delete">
+            </form>
+          </td>
+       </tr>
+      {% endfor %}
+
+    </table>
+  </body>
+</html>
